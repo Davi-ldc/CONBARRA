@@ -963,6 +963,24 @@ body.page-template-default.white {
   margin-top: 2em;
 }
 
+._404 {
+  width: 100%;
+  height: 100vh;
+}
+
+._404wrap{
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+._404text {
+  font-size: clamp(2em, 6vw, 9em);
+}
+
 .svg-5 {
   color: var(--white);
   width: 70em;

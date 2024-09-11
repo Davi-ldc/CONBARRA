@@ -416,7 +416,6 @@ function BlogPostAnimation() {
   const listItems = document.querySelectorAll(".post-item");
 
   listItems.forEach((item, index) => {
-    console.log(isMobileOrTablet ? 0.14 : (index * 0.15))
     gsap.fromTo(
       item,
       { y: "5%", opacity: 0 },
@@ -814,7 +813,6 @@ document.addEventListener("DOMContentLoaded", () => {
     adjustScrollAttributes();
     locoScroll.update();
     introAnimation.removeLinesAndKeepText();
-    console.log('oi')
   });
 
   gothamUltra

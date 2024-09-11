@@ -1,8 +1,7 @@
+<?php get_header() ?>
+  <script src="<?php echo get_template_directory_uri(); ?>/assets/js/404.js"></script>
+  <main class="_404" id="#sccont"><div class="_404wrap"><div class="_404text">página não encontrada</div></div></main>
+</body>
+</html>
 
-<div class="utility-page-wrap">
-    <div class="utility-page-content"><img src="https://d3e54v103j8qbb.cloudfront.net/static/page-not-found.211a85e40c.svg" alt="">
-      <h2>Page Not Found</h2>
-      <div>The page you are looking for doesn&#x27;t exist or has been moved</div>
-    </div>
-</div>
 

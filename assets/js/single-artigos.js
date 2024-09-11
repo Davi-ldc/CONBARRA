@@ -409,6 +409,42 @@ function setupAnchorNavigation(locoScroll) {
   }
 }
 
+function setupHoverAnimation(selector, duration = 0, ease = "none") {
+  const grey = getComputedStyle(document.documentElement)
+    .getPropertyValue("--grey")
+    .trim();
+  const menuLinkHover = getComputedStyle(document.documentElement)
+    .getPropertyValue("--menulinkhover")
+    .trim();
+
+  const elements = document.querySelectorAll(selector);
+
+  elements.forEach((element) => {
+    let hoverTimeline;
+
+    element.addEventListener("mouseenter", () => {
+      if (hoverTimeline) hoverTimeline.kill();
+      gsap.to(element, {
+        color: menuLinkHover,
+        duration: 0,
+      });
+    });
+
+    element.addEventListener("mouseleave", () => {
+      hoverTimeline = gsap.to(element, {
+        color: grey,
+        duration: duration, // transição ao sair
+        ease: ease,
+      });
+    });
+  });
+}
+
+function initializeHoverAnimations() {
+  setupHoverAnimation([".navlink", ".link"]);
+  setupHoverAnimation(".menusocialiconwrap", 0.5, "ease");
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const sccontElement = document.querySelector("#sccont");
   const locoScroll = new LocomotiveScroll({
@@ -419,6 +455,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
    
   initializeScrollTrigger(locoScroll);
+
+  if (window.matchMedia("(min-width: 991px)").matches) {
+    initializeHoverAnimations();
+  }
 
   const gothamUltra = new FontFaceObserver("Gotham Ultra");
   const introAnimation = new IntroAnimation();

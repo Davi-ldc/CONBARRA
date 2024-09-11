@@ -72,9 +72,8 @@ if (is_front_page()) : ?>
   <script src="<?php echo get_template_directory_uri(); ?>/assets/js/main.js"></script>
 <?php 
 elseif (is_page('artigos')) : ?>
-  <script src="https://4yqrtk.csb.app/artigos.js"></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/assets/js/artigos.js"></script>
 <?php 
 elseif (is_single()) : ?>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="<?php echo get_template_directory_uri(); ?>/assets/js/single-artigos.js"></script>
 <?php endif; ?>
