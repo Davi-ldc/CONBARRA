@@ -5,7 +5,7 @@
       <?php 
         if ( function_exists( 'pods' ) ) {
             $pod = pods('artigos', get_the_ID());
-            $imagem = $pod->display('imagem_na_vertical');
+            $imagem = $pod->display('imagem_na_horizontal') ?: $pod->display('imagem_na_vertical');
         }
         ?>
         <img loading="lazy" src="<?php echo esc_url($imagem); ?>" alt="<?php the_title_attribute(); ?>" class="image-2">
