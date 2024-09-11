@@ -79,6 +79,9 @@ class IntroAnimation {
     this.introWrap = document.querySelector(".intro_wrap");
     this.language = document.querySelector(".menu_text_wrap");
     this.menu = document.querySelector(".menu_icon_wrap");
+    this.IntroText = document.querySelector(".titulo-artigo-2");
+    this.infos = document.querySelector('.informa-es-wrap-2');
+    this.arrow = document.querySelector('.proxima-se-o')
 
   }
   
@@ -86,6 +89,14 @@ class IntroAnimation {
     gsap.set(this.language, { y: "100%" });
     gsap.set(this.menu, { opacity: 0 });
     gsap.set(this.introWrap, { opacity: 1 });
+
+    gsap.set(this.IntroText, { opacity: 0, y: '10%' });
+    gsap.set(this.infos, { opacity: 0 });
+    gsap.set(this.arrow, { opacity: 0, scale: 0.9 });
+
+
+    addWillChange(this.IntroText, 'transform, opacity');
+    addWillChange(this.arrow, 'scale');
 
   }
 
@@ -114,7 +125,15 @@ class IntroAnimation {
         remainingTime / 1000
       )
       .to(this.menu, { opacity: 1 }, d - 0.2)
-      .to(this.language, { y: "0%" }, d);
+      .to(this.language, { y: "0%" }, d)
+      .to(this.IntroText, { opacity: 1 }, d)
+      .to(this.IntroText, { y:'0%', ease:'power2.out', duration:0.9 }, d)
+      .to(this.infos, { opacity: 1, ease:'power2.inOut'}, d+0.4)
+      .to(this.arrow, { opacity: 1, ease:'power2.inOut' }, d+0.5)
+      .to(this.arrow, {scale:1}, d+0.5)
+
+
+      
 
     return timeline;
   }

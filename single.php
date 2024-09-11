@@ -16,13 +16,13 @@
       <h1 class="titulo-artigo-2"><?php the_title(); ?></h1>
       <div class="informa-es-wrap-2">
         <div class="autor-wrap-2">
-          <div class="opacidade-50 white">Escrito por&nbsp;</div>
+          <div class="opacidade-50 white" style="margin-top:auto; margin-bottom:auto;">Escrito por&nbsp;</div>
           <div><?php echo esc_html(get_post_meta(get_the_ID(), 'autores', true)); ?></div>
         </div>
         <div class="dot white hidemobile"></div>
         <div class="data-wrap">
-          <div class="opacidade-50 white">Em&nbsp;</div>
-          <div><?php echo esc_html(date('j/n/Y', strtotime(get_post_meta(get_the_ID(), 'data_da_publicacao', true)))); ?></div>
+          <div class="opacidade-50 white" style="margin-top:auto; margin-bottom:auto;">Em&nbsp;</div>
+          <div><?php echo esc_html(date_i18n('j \d\e F \d\e Y', strtotime(get_post_meta(get_the_ID(), 'data_da_publicacao', true)))); ?></div>
         </div>
       </div>
       <a href="<?php echo get_permalink(); ?>#Conteudo" class="proxima-se-o w-inline-block">

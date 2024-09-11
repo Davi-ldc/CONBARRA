@@ -416,6 +416,7 @@ function BlogPostAnimation() {
   const listItems = document.querySelectorAll(".post-item");
 
   listItems.forEach((item, index) => {
+    console.log(isMobileOrTablet ? 0.14 : (index * 0.15))
     gsap.fromTo(
       item,
       { y: "5%", opacity: 0 },
@@ -429,7 +430,7 @@ function BlogPostAnimation() {
           scroller: "#sccont",
           start: "top 100%",
         },
-        delay: isMobileOrTablet ? 0.14 : (index * 0.15),
+        delay: isMobileOrTablet ? 0.15 : (index * 0.15),
       }
     );
   });
@@ -470,6 +471,10 @@ function setupCanvasScrollTrigger(
       animationModule.onScrollProgress(self.progress);
     },
   });
+
+  setTimeout(() => {
+    ScrollTrigger.refresh();
+  }, 200);
 
   return animationModule;
 }
@@ -693,7 +698,6 @@ function setupServicosAnimation() {
         trigger: servicosWrap,
         scroller: "#sccont",
         start: isMobileOrTablet ? 'top top' : "top 80%",
-        markers: true
       },
       defaults: {
         duration: 1,
@@ -843,7 +847,5 @@ document.addEventListener("DOMContentLoaded", () => {
   setupFadeInAnimations();
   setupServicosAnimation();
   BlogPostAnimation();
-
-
 
 });
