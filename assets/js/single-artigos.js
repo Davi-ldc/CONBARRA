@@ -373,11 +373,10 @@ function setupMenuAnimation() {
 }
 
 function setupAnchorNavigation(locoScroll) {
-  const anchorLink = document.querySelector('a[href="#Conteudo"]');
-  console.log(anchorLink)
+  const anchorLink = document.querySelector('.proxima-se-o');
   
   if (anchorLink) {
-    const target = document.querySelector('#proxima-se-o');
+    const target = document.querySelector('#Conteudo');
 
     anchorLink.addEventListener('click', (e) => {
       e.preventDefault();
