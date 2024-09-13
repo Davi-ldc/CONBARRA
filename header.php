@@ -38,13 +38,34 @@ if (is_front_page()) {
         </div>
         <div class="noverflow">
           <div class="menu_text_wrap">
-            <a href="#" class="w-inline-block">
-              <div class="language<?php echo $black_class; ?>">PT</div>
+
+
+          <?php
+            $current_language = get_locale();
+            $current_url = get_permalink();
+
+            $pt_url = preg_replace('~(/en/|/en$)~', '/', $current_url);
+            $en_url = (strpos($current_url, '/en') === false) ? home_url('/en' . parse_url($current_url, PHP_URL_PATH)) : $current_url;
+
+            $pt_url = rtrim($pt_url, '/') . '/';
+            $en_url = rtrim(preg_replace('~/en/en(/|$)~', '/en/', $en_url), '/') . '/';
+
+            $is_english = ($current_language === 'en_US');
+            ?>
+
+
+            <a href="<?php echo esc_url($pt_url); ?>" class="w-inline-block">
+                <div class="language<?php echo $black_class; ?><?php echo (!$is_english) ? ' current-language' : ''; ?>">
+                    PT
+                </div>
             </a>
             <div class="language<?php echo $black_class; ?>">/</div>
-            <a href="#" class="w-inline-block">
-              <div class="language<?php echo $black_class; ?>">EN</div>
+            <a href="<?php echo esc_url($en_url); ?>" class="w-inline-block">
+                <div class="language<?php echo $black_class; ?><?php echo ($is_english) ? ' current-language' : ''; ?>">
+                    EN
+                </div>
             </a>
+
           </div>
         </div>
       </div>
@@ -92,7 +113,7 @@ if (is_front_page()) {
               <a href="<?php echo get_home_url(); ?>" class="navlink _2 w-inline-block">
                 <div class="navlinktext _2">Home</div>
               </a>
-              <a href="#" class="navlink _3 w-inline-block">
+              <a href="https://wa.me/5561999964495" class="navlink _3 w-inline-block">
                 <div class="navlinktext _3">Contato</div>
               </a>
             </div>

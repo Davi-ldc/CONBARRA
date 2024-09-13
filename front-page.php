@@ -69,7 +69,7 @@
             <div class="linktext">Currículo<br></div>
             <div class="linkline"></div>
           </a>
-          <p class="p fade">Alexandre Barra, iniciou sua carreira como consultor em 1996, atuou como especialista em
+          <p class="p fade">Alexandre Barra iniciou sua carreira como consultor em 1996, atuou como especialista em
             regulação na ANTT, em seguida foi analista sênior de infraestrutura na CNI, diretor-adjunto na Andrade
             Gutierrez e diretor regional na ABCR.</p>
         </div>
@@ -209,28 +209,29 @@
         <div class="right">
           
           <?php
-            // Verifica se o PODS está ativo
             if ( function_exists( 'pods' ) ) {
-                // Inicializa o objeto PODS para a coleção "depoimentos"
                 $params = array(
-                    'orderby' => 'post_date DESC', // Ordena pela data (mais recente primeiro)
+                    'orderby' => 'post_date DESC', 
                     'limit' => -1 // Sem limite de itens
                 );
                 $pods = pods( 'depoimentos', $params );
                 
-                // Verifica se há depoimentos
+                
                 if ( $pods->total() > 0 ) :
             ?>
                 <div class="swiper-container">
                     <div id="testimonial-slider" class="swiper w-dyn-list">
                         <div role="list" class="swiper-wrapper w-dyn-items">
                             <?php
-                            // Loop através dos depoimentos
+                            $current_language = get_locale();
                             while ( $pods->fetch() ) :
-                                // Recupera os campos necessários usando o método 'display'
                                 $nome_autor = $pods->display( 'nome_do_autor' );
                                 $titulo_autor = $pods->display( 'titulo_do_autor' );
                                 $depoimento = $pods->display( 'depoimento' );
+                                if ($current_language === 'en_US') {
+                                  $titulo_autor = $pods->display('titulo_do_autor_traduzido');
+                                  $depoimento = $pods->display('depoimento_traduzido');
+                                }
                             ?>
                                 <div role="listitem" class="swiper-slide w-dyn-item">
                                     <div class="testimonial-slide-center">
